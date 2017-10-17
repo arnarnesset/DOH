@@ -1,0 +1,43 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
+    <title>ApiHome</title>
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Send an Ajax request
+            $.getJSON('/umbraco/api/ProductsApi/GetAllProducts')
+                .done(function (data) {
+                    console.log(data);
+                    // On success, 'data' contains a list of products
+                    $.each(data, function (key, item) {
+                        // Add a list item for the product
+                        $('<li>', { text: formatItem(item) }).appendTo($('#Products'));
+                    });
+                });
+        });
+
+        function formatItem(item) {
+            return item.Name + ': NOK ' + item.Price;
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <h2>All products</h2>
+        <ul id="Products"></ul>
+    </div>
+</body>
+</html>

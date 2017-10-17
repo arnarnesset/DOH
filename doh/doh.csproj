@@ -112,10 +112,12 @@
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.1\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.0.1\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -255,6 +257,7 @@
     <Content Include="config\imageprocessor\processing.config" />
     <Content Include="config\imageprocessor\cache.config" />
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
+    <Content Include="css\umbraco-starterkit-style.css" />
     <Content Include="Media\Web.config" />
     <Content Include="config\umbracoSettings.config" />
     <Content Include="config\trees.config" />
@@ -301,6 +304,12 @@
     <Content Include="App_Data\NuGetBackup\20170929-155155\CopyLogs\UmbracoCopy.log" />
     <Content Include="App_Data\NuGetBackup\20170929-155155\Web.config" />
     <None Include="packages.config" />
+    <None Include="scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="scripts\jquery-3.2.1.js" />
+    <Content Include="scripts\jquery-3.2.1.min.js" />
+    <Content Include="scripts\jquery-3.2.1.slim.js" />
+    <Content Include="scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="scripts\umbraco-starterkit-app.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
@@ -457,6 +466,21 @@
     <Content Include="Umbraco\Webservices\TagsAutoCompleteHandler.ashx" />
     <Content Include="Umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="Umbraco\Xslt\Web.config" />
+    <Content Include="Views\Blog.cshtml" />
+    <Content Include="Views\Blogpost.cshtml" />
+    <Content Include="Views\Contact.cshtml" />
+    <Content Include="Views\ContentPage.cshtml" />
+    <Content Include="Views\HomeAPI.cshtml" />
+    <Content Include="Views\Master.cshtml" />
+    <Content Include="Views\People.cshtml" />
+    <Content Include="Views\Person.cshtml" />
+    <Content Include="Views\Product.cshtml" />
+    <Content Include="Views\Products.cshtml" />
+    <Content Include="Views\MacroPartials\FeaturedProducts.cshtml" />
+    <Content Include="Views\MacroPartials\LatestBlogposts.cshtml" />
+    <Content Include="Views\Home.cshtml" />
+    <Content Include="scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="scripts\jquery-3.2.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1847,15 +1871,24 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AntiForgeryController.cs" />
+    <Compile Include="Controllers\ProductsApiController.cs" />
+    <Compile Include="Helpers\ResourcesDemo.cs" />
+    <Compile Include="Models\ContactFormViewModel.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\NuGetBackup\20170929-155155\Umbraco\" />
     <Folder Include="App_Data\NuGetBackup\20170929-155155\Umbraco_Client\" />
+    <Folder Include="Views\AntiForgery\" />
+    <Folder Include="Views\ProductsApi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyClassLibrary\MyClassLibrary.csproj">
+      <Project>{5eb20795-368c-44a2-bcc6-0f6b165af114}</Project>
+      <Name>MyClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,13 +2,21 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "Master.cshtml";
+
+    var all = Model.Content.Children.Where(x => x.Id > 0);
+    var ids = Model.Content.Children.Select(y => y.Id);
+    var first = Model.Content.Children.FirstOrDefault();
+
+    // Helpers
+    var p = Umbraco.UrlProvider;
+    var mode = p.Mode;
+    var cq = Umbraco.ContentQuery;
+    var culture = Umbraco.CultureDictionary.Culture;
+
 }
 @Html.Partial("~/Views/Partials/SectionHeader.cshtml")
-
 <section class="section">
-
     <div class="container">
-
         @Umbraco.RenderMacro("latestBlogposts",
                      new
                      {
@@ -28,5 +36,18 @@
         </nav>
         -->
     </div>
+
+    @using (Html.BeginForm())
+    {
+        // Sammen med [ValidateAntiForgeryToken()] på Post-metoden i controlleren sikrer @Html.AntiForgeryToken() i viewet at kun forms generert på samme server blir prosessert.
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Product details</legend>
+        </fieldset>
+
+        // Bruk en (ekstern) ressursfil for tekster som det kan være behov for å endre, evt. betjene flere språk
+        @Html.ActionLink(MyClassLibrary.Resources.ApplicationName, "Index", "Home")
+
+    }
 
 </section>
